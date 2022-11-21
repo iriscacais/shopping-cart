@@ -1,7 +1,8 @@
 import { searchCep } from './helpers/cepFunctions';
 import './style.css';
-import { fetchProductsList } from './helpers/fetchFunctions';
-import { createProductElement } from './helpers/shopFunctions';
+import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
+import { createCartProductElement, createProductElement } from './helpers/shopFunctions';
+import { getSavedCartIDs } from './helpers/cartFunctions';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 const productList = document.querySelector('.products'); // capturo a section onde quero colocar as informações da API
@@ -37,4 +38,14 @@ const main = async () => {
     removeLoading();
   }
 };
+
+const localStorageCart = async () => {
+  const cartProducts = document.querySelector('.cart__products');
+  const ids = getSavedCartIDs();
+  const arrayIds = ids.map((id) => fetchProduct(id));
+  const promises = await Promise.all(arrayIds);
+  promises.forEach((promise) => cartProducts
+    .appendChild(createCartProductElement(promise)));
+};
+localStorageCart();
 main();
