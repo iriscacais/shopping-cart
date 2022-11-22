@@ -40,12 +40,18 @@ const main = async () => {
 };
 
 const localStorageCart = async () => {
+  const totalPrice = document.querySelector('.total-price');
   const cartProducts = document.querySelector('.cart__products');
   const ids = getSavedCartIDs();
   const arrayIds = ids.map((id) => fetchProduct(id));
   const promises = await Promise.all(arrayIds);
   promises.forEach((promise) => cartProducts
     .appendChild(createCartProductElement(promise)));
+  const productPrice = promises.map((idProduto) => idProduto.price);
+  const sum = productPrice.reduce((acc, cur) => acc + cur, 0);
+  totalPrice.innerHTML = sum;
+  const sub = productPrice.reduce((acc, cur) => (acc - cur), 0);
+  totalPrice.innerHTML = Math.abs(sub);
 };
 localStorageCart();
 main();

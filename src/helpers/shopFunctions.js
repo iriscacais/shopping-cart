@@ -1,6 +1,5 @@
-import { removeCartID, saveCartID } from './cartFunctions';
+import { removeCartID, saveCartID, getSavedCartIDs } from './cartFunctions';
 import { fetchProduct } from './fetchFunctions';
-
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
 
@@ -89,6 +88,15 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
   li.appendChild(removeButton);
 
   li.addEventListener('click', () => removeCartProduct(li, id));
+  li.addEventListener('click', async () => {
+    const totalPrice = document.querySelector('.total-price');
+    const ids = getSavedCartIDs();
+    const arrayIds = ids.map((idProduct) => fetchProduct(idProduct));
+    const promises = await Promise.all(arrayIds);
+    const productPrice = promises.map((promise) => promise.price);
+    const sub = productPrice.reduce((acc, cur) => (acc - cur), 0);
+    totalPrice.innerHTML = Math.abs(sub);
+  });
   return li;
 };
 
@@ -127,6 +135,15 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
     const details = await fetchProduct(id);
     const products = document.querySelector('.cart__products');
     products.appendChild(createCartProductElement(details));
+  });
+  cartButton.addEventListener('click', async () => {
+    const totalPrice = document.querySelector('.total-price');
+    const ids = getSavedCartIDs();
+    const arrayIds = ids.map((idProduct) => fetchProduct(idProduct));
+    const promises = await Promise.all(arrayIds);
+    const productPrice = promises.map((promise) => promise.price);
+    const sum = productPrice.reduce((acc, cur) => acc + cur, 0);
+    totalPrice.innerHTML = sum;
   });
 
   section.appendChild(cartButton);
