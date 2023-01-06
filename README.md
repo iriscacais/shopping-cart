@@ -43,7 +43,7 @@ Para ver esse projeto funcionando na sua máquina:
 
 10. Calcula o valor total dos produtos no carrinho de compras;
 
-11. Implementa a função getAddress no arquivo cepFunctions.js, responsável por realizar a requisição para a API de CEPs e retornar o endereço completo do CEP. A requisição foi feita para 2 APIs de CEP diferentes com o objetivo de utilizar a que retornar primeiro. Utilizando o método Promise.any;
+11. Implementa a função getAddress no arquivo cepFunctions.js, responsável por realizar a requisição para a API de CEPs e retornar o endereço completo do CEP. A requisição foi feita para 2 APIs de CEP diferentes com o objetivo de utilizar a que retornar primeiro. Utilizando o método Promise.any:
 
 >https://cep.awesomeapi.com.br/json/$CEP 
 
