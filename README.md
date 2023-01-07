@@ -2,7 +2,7 @@
 ## Desenvolvido no módulo de front-end do curso de desenvolvimento web da Trybe 🚀
 
 ### Descrição do projeto
-Com CSS e HTML já desenvolvidos pela Trybe, o objetivo desse projeto foi desenvolver um carrinho de compras dinâmico, consumindo dados de uma API do mercado livre e dados de uma API de CEP. Além disso, colocar em prática conhecimentos de TDD (Test Driven Development) para treinar e garantir escritas de códigos de qualidade garantindo a funcionalidade da aplicação.
+Com CSS e HTML já desenvolvidos pela Trybe, o objetivo desse projeto foi desenvolver um carrinho de compras dinâmico, consumindo dados de uma API do mercado livre e dados de duas API de CEP. Além disso, colocar em prática conhecimentos de TDD (Test Driven Development) para treinar e garantir escritas de códigos de qualidade garantindo a funcionalidade da aplicação.
 
 obs: as funções dentro do arquivo shopFunction.js e cartFunctions.js foram desenvolvidas pela Trybe (exceto a parte de evento de click dentro da função createProductElement que foi desenvolvida por mim).
 
